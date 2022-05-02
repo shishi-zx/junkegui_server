@@ -51,6 +51,9 @@ Martyr.belongsTo(Position)
 //烈士与陵园
 Martyr_cemetery.hasMany(Martyr)
 Martyr.belongsTo(Martyr_cemetery)
+//陵园与归属地
+Position.hasMany(Martyr_cemetery)
+Martyr_cemetery.belongsTo(Position)
 // 志愿者与志愿者文章
 Volunteer.hasMany(Volunteer_article)
 Volunteer_article.belongsTo(Volunteer)

@@ -10,6 +10,13 @@ var usersRouter = require('./routes/users');
 var testRouter = require("./routes/test")
 let interception = require('./interception/index')
 let menuRouter = require("./routes/menu")
+let VolunteerRouter = require("./routes/volunteer")
+let seekerRouter = require("./routes/family_seeker")
+let positionRouter = require("./routes/position")
+let martyrRouter = require("./routes/martyr")
+let martyrCemeteryRouter = require("./routes/martyr_cemetery")
+let seekerArticleRouter = require("./routes/Seeker_article")
+let volunteerArticleRouter = require("./routes/volunteerArticle")
 
 var app = express();
 
@@ -38,6 +45,13 @@ app.use(interception)
 app.use('/users', usersRouter);
 app.use('/test',testRouter);
 app.use('/menu',menuRouter)
+app.use('/volunteer',VolunteerRouter);
+app.use('/seeker',seekerRouter);
+app.use('/position',positionRouter);
+app.use('/martyr',martyrRouter);
+app.use('/martyrCemetery',martyrCemeteryRouter);
+app.use('/seekerArticle',seekerArticleRouter);
+app.use('/volunteerArticle',volunteerArticleRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

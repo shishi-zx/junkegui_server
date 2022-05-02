@@ -24,7 +24,7 @@ const Volunteer_article = dbInstance.define('volunteer_article',{
     state: {
         name: 'state',
         type: DataTypes.INTEGER,
-        defaultValue: 0// 0待审核，1 通过 -1 不通过
+        defaultValue: 0// 0待审核，1 通过 2 不通过
     }
 },{
     timestamps: false,
