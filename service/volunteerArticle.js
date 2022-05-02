@@ -17,3 +17,22 @@ module.exports.getAll = async function (payload) {
     })
     return Result.success('ok', res)
 }
+
+module.exports.getOneById = async function(payload){
+    let res = await Volunteer_article.findOne({
+        where:{
+            id: payload.id
+        },
+        include: Volunteer
+    })
+    return Result.success('ok',res)
+}
+
+module.exports.updateArticle = async function(payload){
+    let res = await Volunteer_article.update(payload,{
+        where: {
+            id: payload.id
+        }
+    })
+    return Result.success('ok',res)
+}

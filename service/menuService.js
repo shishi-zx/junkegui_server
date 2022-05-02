@@ -22,7 +22,16 @@ module.exports.findAll = async function (id){
             menus.push(...v.dataValues.menus)
         })
     }
-    return Result.package('请求成功',CODE.SUCCESS,menus)
+    //因为管理员可能多种角色，需要去重
+    let set = new Set()
+    let res = []
+    menus.forEach(e => {
+        if(!set.has(e.id)){
+            set.add(e.id)
+            res.push(e)
+        }
+    });
+    return Result.package('请求成功',CODE.SUCCESS,res)
 }
 
 /**
