@@ -8,5 +8,14 @@ router.get('/',async (req,res)=>{
     res.json(p)
 })
 
+router.get('/one',async (req,res)=>{
+    let p = await volunteerArticleService.getOneById(req.query)
+    res.json(p)
+})
+
+router.post('/update',async (req,res)=>{
+    let p = await volunteerArticleService.updateArticle(req.body)
+    res.json(p)
+})
 
 module.exports = router
