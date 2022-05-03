@@ -6,7 +6,7 @@ const util = require("../utils/index")
 
 
 /**
- * 获取所有的志愿者
+ * 获取所有
  * @param {*} payload 
  */
 module.exports.getAll = async function(payload){
