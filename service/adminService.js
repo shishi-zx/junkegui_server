@@ -1,6 +1,7 @@
-const { Admin, Role, Menu } = require("../model/index")
+const { Admin, Role, Menu, Admin_role } = require("../model/index")
 const Result = require("../result/result")
 const CODE = require("../result/code")
+const utils = require("../utils/index")
 
 /**
  * 管理员登录
@@ -201,7 +202,11 @@ module.exports.addOne = async function(id,payload){
     
 // }
 
-
+/**
+ * 获取所有权限选项
+ * @param {*} id 
+ * @returns 
+ */
 module.exports.getAllRoles = async function(id){
     //首先确保他有该权限
     let rids = await getRoles(id)
@@ -218,6 +223,39 @@ module.exports.getAllRoles = async function(id){
     return Result.success('ok',res)
 }
 
+/**
+ * 添加管理员的权限（角色）
+ * @param {*} payload 
+ */
+module.exports.addAdminRoles = async function(id,payload){
+    let rids = await utils.getRoles(id)
+    if(rids.indexOf(7)==-1){
+        return Result.package("不具备该权限", CODE.ADMIN_NOT_ROLE)
+    }
+    //ok
+    let res = await Admin_role.create(payload)
+    return Result.success('ok',res)
+}
+
+/**
+ * 删除管理员的某个权限
+ * @param {*} id 
+ * @param {*} payload 
+ * @returns 
+ */
+module.exports.delAdminRoles = async function(id,payload){
+    let rids = await utils.getRoles(id)
+    if(rids.indexOf(7)==-1){
+        return Result.package("不具备该权限", CODE.ADMIN_NOT_ROLE)
+    }
+    //ok
+    let res = await Admin_role.destroy({
+        where:{
+            id: payload.id
+        }
+    })
+    return Result.success('ok',res)
+}
 
 
 /**
