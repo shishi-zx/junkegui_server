@@ -84,4 +84,16 @@ router.get('/roles',async(req,res)=>{
   res.json(p)
 })
 
+//添加管理员的权限
+router.put('/addRole',async(req,res)=>{
+  let p = await adminService.addAdminRoles(req.session.admin_id,req.body)
+  res.json(p)
+})
+
+//删除管理员的权限
+router.post('/delRole',async(req,res)=>{
+  let p = await adminService.delAdminRoles(req.session.admin_id,req.body)
+  res.json(p)
+})
+
 module.exports = router;
