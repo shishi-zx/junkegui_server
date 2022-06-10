@@ -50,6 +50,12 @@ router.put('/inf',async (req,res)=>{
 //获取所有管理员信息
 router.get('/allAdmin',async (req,res)=>{
   let p = await adminService.getAllAdmin(req.session.admin_id)
+  // let p = await adminService.getAllAdmin(14)
+  res.json(p)
+})
+
+router.get('/one',async (req,res)=>{
+  let p = await adminService.getOne(req.session.admin_id,req.query)
   res.json(p)
 })
 

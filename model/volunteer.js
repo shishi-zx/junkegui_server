@@ -31,6 +31,10 @@ const Volunteer = dbInstance.define('volunteer',{
     //     name: 'pid',
     //     type: DataTypes.INTEGER
     // },
+    place: {
+        name: 'place',
+        type: DataTypes.STRING
+    },
     state: {
         name: 'state',
         type: DataTypes.INTEGER,

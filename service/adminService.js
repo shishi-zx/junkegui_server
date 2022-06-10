@@ -1,7 +1,7 @@
 const { Admin, Role, Menu, Admin_role } = require("../model/index")
 const Result = require("../result/result")
 const CODE = require("../result/code")
-const utils = require("../utils/index")
+const util = require("../utils/index")
 
 /**
  * 管理员登录
@@ -114,6 +114,27 @@ module.exports.getAllAdmin = async function (admin_id) {
 
     return Result.success("ok", admins)
 
+}
+
+/**
+ * 获取一名管理员详情
+ * @param {} admin_id 
+ * @param {*} payload 
+ */
+ module.exports.getOne = async function (admin_id,payload){
+    // 检查管理员权限是否足够
+    let roles = await util.getRoles(admin_id)
+    if (roles.indexOf(8) == -1) {
+        return Result.package('权限不够', CODE.ADMIN_NOT_ROLE)
+    }
+    //权限够则查找
+    let res = await Admin.findOne({
+        where:{
+            id: payload.id
+        },
+        include: Role
+    })
+    return Result.success('ok', res)
 }
 
 /**

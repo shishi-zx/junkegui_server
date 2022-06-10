@@ -25,6 +25,11 @@ const Seeker_article = dbInstance.define('seeker_ article',{
         name: 'state',
         type: DataTypes.INTEGER,
         defaultValue: 0// 0待审核，1 通过 2 不通过
+    },
+    comment: {
+        name :'comment',
+        type: DataTypes.TEXT,
+        allowNull: true
     }
 },{
     timestamps: false,

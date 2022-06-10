@@ -26,6 +26,10 @@ const Family_seeker = dbInstance.define('family_seeker',{
         name: 'name',
         type: DataTypes.STRING
     },
+    place: {
+        name: 'place',
+        type: DataTypes.STRING
+    }
 },{
     timestamps: false,
     freezeTableName: true

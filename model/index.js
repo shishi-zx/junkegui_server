@@ -70,7 +70,7 @@ Message_push.belongsTo(Admin)
 /**
  * 修改模型后，放开注释同步模型
  */
-// dbInstance.sync().then(data=>{
+// dbInstance.sync({ alter: true }).then(data=>{
 //     console.log('同步成功');
 // }).catch(e=>{
 //     console.log('同步失败，请检查数据模型',e);
